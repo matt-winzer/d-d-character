@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,GAAI;EACF,gBAAgB,ECDR,GAAG;EDEX,aAAa,EAAE,GAAG;;AEFpB,MAAO;EACL,gBAAgB,EAAE,cAAmB",
+"sources": ["../scss/_header.scss","../scss/_variables.scss","../scss/_footer.scss"],
+"names": [],
+"file": "base.css"
+}
