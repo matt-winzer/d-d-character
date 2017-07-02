@@ -2,6 +2,23 @@ nav {
   background-color: red;
   margin-bottom: 1em; }
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+main {
+  flex: 1 0 auto; }
+
+.col {
+  border: 2px solid black; }
+
+.top-bar {
+  min-height: 5em !important; }
+
+.main-column {
+  min-height: 40em !important; }
+
 footer {
   background-color: red !important; }
 

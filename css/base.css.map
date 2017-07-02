@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,GAAI;EACF,gBAAgB,ECDR,GAAG;EDEX,aAAa,EAAE,GAAG;;AEFpB,MAAO;EACL,gBAAgB,EAAE,cAAmB",
-"sources": ["../scss/_header.scss","../scss/_variables.scss","../scss/_footer.scss"],
+"mappings": "AAAA,GAAI;EACF,gBAAgB,ECDR,GAAG;EDEX,aAAa,EAAE,GAAG;;AEFpB,IAAK;EACH,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,KAAK;EACjB,cAAc,EAAE,MAAM;;AAGxB,IAAK;EACH,IAAI,EAAE,QAAQ;;AAGhB,IAAK;EACH,MAAM,EAAE,eAAe;;AAGzB,QAAS;EACP,UAAU,EAAE,cAAc;;AAG5B,YAAa;EACX,UAAU,EAAE,eAAe;;ACnB7B,MAAO;EACL,gBAAgB,EAAE,cAAmB",
+"sources": ["../scss/_header.scss","../scss/_variables.scss","../scss/_main.scss","../scss/_footer.scss"],
 "names": [],
 "file": "base.css"
 }
