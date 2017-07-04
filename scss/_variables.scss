@@ -5,3 +5,18 @@ $margin: 1em;
 $primary-light: lighten($primary, 30%);
 $primary-dark: darken($primary, 30%);
 $complement: complement($primary);
+
+@mixin flex {
+  display: flex;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

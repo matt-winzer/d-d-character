@@ -8,6 +8,11 @@ main {
   flex: 1 0 auto;
 }
 
+.contain {
+  width: 85%;
+  margin: 0 auto;
+}
+
 .col {
   border: 2px solid black;
 }
@@ -21,11 +26,19 @@ main {
 }
 
 .flex {
-  display: flex;
+  @include flex;
 }
 
 .flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
+}
+
+.stat {
+  height: 7em;
+  margin-bottom: 1em;
+  border: 2px solid red;
+}
+
+.bottom-left {
+  height: 10em;
 }
