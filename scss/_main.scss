@@ -9,7 +9,7 @@ main {
 }
 
 .contain {
-  width: 85%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -17,8 +17,14 @@ main {
   border: 2px solid black;
 }
 
+.dice-img {
+  height: 100%;
+  // max-width: 50%;
+}
+
 .top-bar {
-  min-height: 5em !important;
+  height: 10em !important;
+
 }
 
 .main-column {
@@ -41,4 +47,16 @@ main {
 
 .bottom-left {
   height: 10em;
+}
+
+td, th {
+  padding: .4em 0;
+}
+
+.combat-stats {
+  .col {
+    border: 2px solid orange;
+    min-height: 7em !important;
+    @include flex-center;
+  }
 }
