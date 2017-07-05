@@ -13,16 +13,25 @@ function getStatDetails() {
 }
 
 function showStatDetails(stat) {
-  // console.log(stat);
   let name = stat.full_name;
   let description = stat.desc[0];
   let descriptionCheck = stat.desc[1];
   let skills = stat.skills;
 
-  console.log(skills);
+  emptyModal('#modal1');
+  appendSkills('#modal1', name, description, descriptionCheck);
+  if (skills.length > 0) {
+    skills.forEach(function(skill) {
+      $('.stat-skills').append(
+        `<div class="chip">${skill.name}</div>`
+      );
+    });
+  }
+  openModal('#modal1');
+}
 
-  $('#modal1').empty();
-  $('#modal1').append(
+function appendSkills(modalID, name, description, descriptionCheck) {
+  $(modalID).append(
     `<div class="modal-content">
       <h2>${name}</h2>
       <p>${description}</p>
@@ -33,15 +42,12 @@ function showStatDetails(stat) {
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>`
   );
+}
 
-  if (skills.length > 0) {
-    skills.forEach(function(skill) {
-      $('.stat-skills').append(
-        `<div class="chip">${skill.name}</div>`
-      );
-    });
-  }
+function openModal(modalID) {
+  return $(modalID).modal('open');
+}
 
-  $('#modal1').modal('open');
-
+function emptyModal(modalID) {
+  return $(modalID).empty();
 }
