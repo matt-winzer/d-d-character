@@ -19,7 +19,6 @@ main {
 
 .dice-img {
   height: 100%;
-  // max-width: 50%;
 }
 
 .top-bar {
@@ -43,10 +42,19 @@ main {
   height: 7em;
   margin-bottom: 1em;
   border: 2px solid red;
+  justify-content: space-around;
 }
 
 .bottom-left {
   height: 10em;
+}
+
+.core-stat-icon {
+  height: 5em;
+}
+
+.icon {
+  height: 1.5em;
 }
 
 td, th {
@@ -58,5 +66,14 @@ td, th {
     border: 2px solid orange;
     min-height: 7em !important;
     @include flex-center;
+  }
+}
+
+.health-points {
+  height: 10em;
+  .col {
+    height: 100%;
+    @include flex-center;
+    flex-direction: column;
   }
 }

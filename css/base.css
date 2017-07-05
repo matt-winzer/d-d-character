@@ -37,10 +37,17 @@ main {
 .stat {
   height: 7em;
   margin-bottom: 1em;
-  border: 2px solid red; }
+  border: 2px solid red;
+  justify-content: space-around; }
 
 .bottom-left {
   height: 10em; }
+
+.core-stat-icon {
+  height: 5em; }
+
+.icon {
+  height: 1.5em; }
 
 td, th {
   padding: .4em 0; }
@@ -51,6 +58,15 @@ td, th {
   display: flex;
   justify-content: center;
   align-items: center; }
+
+.health-points {
+  height: 10em; }
+  .health-points .col {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
 
 footer {
   background-color: red !important; }
