@@ -45,6 +45,14 @@ main {
 
 .core-stat-icon {
   height: 5em; }
+  .core-stat-icon:hover {
+    background-color: red; }
+
+.modal-content p {
+  font-size: 1.2em; }
+.modal-content li {
+  font-size: 1.1em;
+  text-decoration: line-through; }
 
 .icon {
   height: 1.5em; }

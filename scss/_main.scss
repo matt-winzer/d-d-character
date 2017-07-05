@@ -51,6 +51,24 @@ main {
 
 .core-stat-icon {
   height: 5em;
+
+  &:hover {
+    background-color: red;
+  }
+}
+
+.modal-content {
+  p {
+    font-size: 1.2em;
+  }
+  li {
+    font-size: 1.1em;
+    text-decoration: line-through;
+  }
+}
+
+.stat-skills {
+  // margin-top: 1em;
 }
 
 .icon {
