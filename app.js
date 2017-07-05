@@ -1,6 +1,7 @@
 $(document).ready(function() {
   $('.modal').modal();
   $('.core-stat-icon').click(getStatDetails);
+  $('.skills-row').click(getSkillDetails)
 
 });
 
@@ -19,7 +20,7 @@ function showStatDetails(stat) {
   let skills = stat.skills;
 
   emptyModal('#modal1');
-  appendSkills('#modal1', name, description, descriptionCheck);
+  appendStatInfo('#modal1', name, description, descriptionCheck);
   if (skills.length > 0) {
     skills.forEach(function(skill) {
       $('.stat-skills').append(
@@ -30,10 +31,10 @@ function showStatDetails(stat) {
   openModal('#modal1');
 }
 
-function appendSkills(modalID, name, description, descriptionCheck) {
+function appendStatInfo(modalID, name, description, descriptionCheck) {
   $(modalID).append(
     `<div class="modal-content">
-      <h2>${name}</h2>
+      <h3>${name}</h3>
       <p>${description}</p>
       <p>${descriptionCheck}</p>
       <div class="stat-skills"></div>
@@ -44,10 +45,39 @@ function appendSkills(modalID, name, description, descriptionCheck) {
   );
 }
 
+function emptyModal(modalID) {
+  return $(modalID).empty();
+}
+
 function openModal(modalID) {
   return $(modalID).modal('open');
 }
 
-function emptyModal(modalID) {
-  return $(modalID).empty();
+function getSkillDetails() {
+  let id = $(this).attr('data-api-id');
+  let url = `${baseURL}skills/${id}`;
+  $.get(url, showSkillDetails)
+}
+
+function showSkillDetails(skill) {
+  let name = skill.name;
+  let description = skill.desc[0];
+
+  emptyModal('#modal1');
+  appendSkillInfo('#modal1', name, description);
+  openModal('#modal1');
+
+}
+
+function appendSkillInfo(modalID, name, description) {
+  // console.log(this);
+  $(modalID).append(
+    `<div class="modal-content">
+      <h3>${name}</h3>
+      <p>${description}</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>`
+  );
 }
