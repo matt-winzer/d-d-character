@@ -46,7 +46,7 @@ main {
 .core-stat-icon {
   height: 5em; }
   .core-stat-icon:hover {
-    background-color: red; }
+    background-color: yellow; }
 
 .modal-content p {
   font-size: 1.2em; }

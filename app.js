@@ -1,7 +1,8 @@
 $(document).ready(function() {
   $('.modal').modal();
   $('.core-stat-icon').click(getStatDetails);
-  $('.skills-row').click(getSkillDetails)
+  $('.core-stat-icon').hover(applyShadow, removeShadow);
+  $('.skills-row').click(getSkillDetails);
 
 });
 
@@ -21,13 +22,7 @@ function showStatDetails(stat) {
 
   emptyModal('#modal1');
   appendStatInfo('#modal1', name, description, descriptionCheck);
-  if (skills.length > 0) {
-    skills.forEach(function(skill) {
-      $('.stat-skills').append(
-        `<div class="chip">${skill.name}</div>`
-      );
-    });
-  }
+  appendStatSkills(skills);
   openModal('#modal1');
 }
 
@@ -45,6 +40,16 @@ function appendStatInfo(modalID, name, description, descriptionCheck) {
   );
 }
 
+function appendStatSkills(skills) {
+  if (skills.length > 0) {
+    skills.forEach(function(skill) {
+      $('.stat-skills').append(
+        `<div class="chip">${skill.name}</div>`
+      );
+    });
+  }
+}
+
 function emptyModal(modalID) {
   return $(modalID).empty();
 }
@@ -56,7 +61,7 @@ function openModal(modalID) {
 function getSkillDetails() {
   let id = $(this).attr('data-api-id');
   let url = `${baseURL}skills/${id}`;
-  $.get(url, showSkillDetails)
+  $.get(url, showSkillDetails);
 }
 
 function showSkillDetails(skill) {
@@ -66,7 +71,6 @@ function showSkillDetails(skill) {
   emptyModal('#modal1');
   appendSkillInfo('#modal1', name, description);
   openModal('#modal1');
-
 }
 
 function appendSkillInfo(modalID, name, description) {
@@ -80,4 +84,12 @@ function appendSkillInfo(modalID, name, description) {
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>`
   );
+}
+
+function applyShadow() {
+  $(this).addClass('z-depth-3')
+}
+
+function removeShadow() {
+  $(this).removeClass('z-depth-3')
 }
