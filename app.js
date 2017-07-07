@@ -2,8 +2,10 @@ $(document).ready(function() {
   $('.modal').modal();
   $('.core-stat-icon').click(getStatDetails);
   $('.core-stat-icon').hover(applyShadow, removeShadow);
+  $('.icon').click(getStatDetails);
+  $('.icon').hover(applyShadow, removeShadow);
   $('.skills-row').click(getSkillDetails);
-  $('.skills-row').hover(highlightSkill, removeHighlight);
+  $('.skills-row').hover(highlightSkillIcon, removeHighlightSkillIcon);
 
 });
 
@@ -95,14 +97,14 @@ function removeShadow() {
   $(this).removeClass('z-depth-3')
 }
 
-function highlightSkill() {
-  let $icon = $(this).find('.material-icons');
-  // icon.addClass('z-depth-3');
-  $icon.css('background-color', 'rgba(255,255,0,.8)');
+function highlightSkillIcon() {
+  let $icon = $(this).find('.icon');
+  $icon.addClass('z-depth-3');
+  $icon.css('background-color', 'yellow');
 }
 
-function removeHighlight() {
-  let $icon = $(this).find('.material-icons');
-  // $icon.removeClass('z-depth-3');
+function removeHighlightSkillIcon() {
+  let $icon = $(this).find('.icon');
+  $icon.removeClass('z-depth-3');
   $icon.css('background-color', '');
 }

@@ -85,6 +85,12 @@ main {
 
 .icon {
   height: 1.5em;
+  border-radius: 50%;
+
+  // &:hover {
+  //   background-color: yellow;
+  // }
+
 }
 
 td, th {
