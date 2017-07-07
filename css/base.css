@@ -54,6 +54,9 @@ main {
   font-size: 1.1em;
   text-decoration: line-through; }
 
+.material-icons {
+  border-radius: 50%; }
+
 .icon {
   height: 1.5em; }
 
