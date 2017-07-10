@@ -80,6 +80,15 @@ td, th {
     align-items: center;
     flex-direction: column; }
 
+.dice-saves {
+  height: 10em; }
+  .dice-saves .col {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+
 @media (max-width: 700px) {
   .core-stat-icon {
     height: 2em; }

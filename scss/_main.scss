@@ -114,6 +114,15 @@ td, th {
   }
 }
 
+.dice-saves {
+  height: 10em;
+  .col {
+    height: 100%;
+    @include flex-center;
+    flex-direction: column;
+  }
+}
+
 @media (max-width: $breakpoint-phone) {
   .core-stat-icon {
     height: 2em;
