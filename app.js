@@ -13,8 +13,8 @@ let baseURL = 'https://cors-anywhere.herokuapp.com/http://dnd5eapi.co/api/';
 
 function getStatDetails() {
   let id = $(this).attr('data-api-id');
-  let url = `${baseURL}ability-scores/${id}`
-  $.get(url, showStatDetails)
+  let url = `${baseURL}ability-scores/${id}`;
+  $.get(url, showStatDetails);
 }
 
 function showStatDetails(stat) {
@@ -45,7 +45,7 @@ function appendStatInfo(modalID, name, description, descriptionCheck) {
 
 function appendStatSkills(skills) {
   if (skills.length > 0) {
-    skills.forEach(function(skill) {
+    skills.forEach(skill => {
       $('.stat-skills').append(
         `<div class="chip">${skill.name}</div>`
       );
@@ -90,11 +90,11 @@ function appendSkillInfo(modalID, name, description) {
 }
 
 function applyShadow() {
-  $(this).addClass('z-depth-3')
+  $(this).addClass('z-depth-3');
 }
 
 function removeShadow() {
-  $(this).removeClass('z-depth-3')
+  $(this).removeClass('z-depth-3');
 }
 
 function highlightSkillIcon() {

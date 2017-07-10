@@ -6,6 +6,8 @@ $primary-light: lighten($primary, 30%);
 $primary-dark: darken($primary, 30%);
 $complement: complement($primary);
 
+$breakpoint-phone: 700px;
+
 @mixin flex {
   display: flex;
 }
