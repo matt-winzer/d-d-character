@@ -44,7 +44,7 @@ main {
   height: 10em; }
 
 .core-stat-icon {
-  height: 5em; }
+  height: 90%; }
   .core-stat-icon:hover {
     background-color: yellow; }
 
