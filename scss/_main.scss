@@ -41,7 +41,7 @@ main {
 .stat {
   height: 7em;
   margin-bottom: 1em;
-  border: 2px solid red;
+  // border: 2px solid red;
   justify-content: space-around;
 }
 
@@ -49,7 +49,7 @@ main {
   height: 10em;
 }
 
-// .core-stats {
+// .-stats {
 //   padding: 0 !important;
 // }
 
@@ -124,11 +124,17 @@ td, th {
 }
 
 @media (max-width: $breakpoint-phone) {
-  .core-stat-icon {
+  .-stat-icon {
     height: 2em;
   }
 
   .icon {
     display: none;
   }
+}
+
+.card-title {
+  display: flex !important;
+  flex-direction: row;
+  justify-content: space-between;
 }

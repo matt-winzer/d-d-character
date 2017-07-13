@@ -37,7 +37,6 @@ main {
 .stat {
   height: 7em;
   margin-bottom: 1em;
-  border: 2px solid red;
   justify-content: space-around; }
 
 .bottom-left {
@@ -90,11 +89,16 @@ td, th {
     flex-direction: column; }
 
 @media (max-width: 700px) {
-  .core-stat-icon {
+  .-stat-icon {
     height: 2em; }
 
   .icon {
     display: none; } }
+.card-title {
+  display: flex !important;
+  flex-direction: row;
+  justify-content: space-between; }
+
 footer {
   background-color: red !important; }
 
