@@ -35,9 +35,11 @@ main {
   align-items: center; }
 
 .stat {
+  display: flex;
   height: 7em;
   margin-bottom: 1em;
-  justify-content: space-around; }
+  align-items: center;
+  justify-content: space-between; }
 
 .bottom-left {
   height: 10em; }

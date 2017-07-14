@@ -23,7 +23,6 @@ main {
 
 .top-bar {
   height: 10em !important;
-
 }
 
 .main-column {
@@ -39,10 +38,13 @@ main {
 }
 
 .stat {
+  @include flex;
+  // flex-direction: row;
   height: 7em;
   margin-bottom: 1em;
+  align-items: center;
   // border: 2px solid red;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .bottom-left {
