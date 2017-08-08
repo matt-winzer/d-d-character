@@ -23,6 +23,25 @@ main {
 
 .top-bar {
   height: 10em !important;
+
+  .row {
+    margin: 0;
+  }
+
+  .row .col {
+    display: flex;
+    justify-content: center;
+  }
+
+  .card {
+    // padding: 1em;
+  }
+
+  .card-content {
+    height: 10em;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .main-column {
@@ -78,7 +97,7 @@ main {
 }
 
 .stat-skills {
-  // margin-top: 1em;
+  // margin-: 1em;
 }
 
 .material-icons {
