@@ -7,32 +7,68 @@ $(document).ready(function() {
   $('.skills-row').click(getSkillDetails);
   $('.skills-row').hover(highlightSkillIcon, removeHighlightSkillIcon);
 
-  let weapons = [];
-  let armor = [];
-  let items = [];
-  let classes = [];
-  let proficiencies = [];
+  let weapons, armor, items, classes, proficiencies,
+  spells, magicSchools, damageTypes, weaponProperties,
+  skills, abilityScores, features, traits;
+
+
+  // ---------------------------------- ACQUIRE DATA FROM API ----------------------------------
 
   // getEquipSeed();
   // getClassSeed();
   // getProficiencySeed();
+  // getSpellSeed();
+  // getSeedData('magic-schools');
+  // getSeedData('damage-types');
+  // getSeedData('weapon-properties');
+  // getSeedData('skills');
+  // getSeedData('ability-scores');
+  // getSeedData('features');
+  // getSeedData('traits');
 
-  parseEquipSeed();
-  parseClassSeed();
-  proficiencies = parseProficiencySeed('proficiencies')
+  // parseEquipSeed();
+  // classes = parseSeedData('classes')
+  // proficiencies = parseSeedData('proficiencies');
+  // spells = parseSeedData('spells');
+  // magicSchools = parseSeedData('magic-schools');
+  // damageTypes = parseSeedData('damage-types');
+  // weaponProperties = parseSeedData('weapon-properties');
+  // skills = parseSeedData('skills')
+  // abilityScores = parseSeedData('ability-scores');
+  // features = parseSeedData('features');
+  traits = parseSeedData('traits');
 
-  weapons = reformatWeapons(weapons);
-  armor = reformatArmors(armor);
-  items = reformatItems(items);
-  classes = reformatClasses(classes);
-  proficiencies = reformatProficiencies(proficiencies);
+  console.log(traits);
 
-  setLocalStorage('weapons', weapons);
-  setLocalStorage('armor', armor);
-  setLocalStorage('items', items);
-  setLocalStorage('classes', classes);
-  setLocalStorage('proficiencies', proficiencies);
+  // weapons = reformatWeapons(weapons);
+  // armor = reformatArmors(armor);
+  // items = reformatItems(items);
+  // classes = reformatClasses(classes);
+  // proficiencies = reformatProficiencies(proficiencies);
+  // spells = reformatSpells(spells);
+  // magicSchools = reformatSchools(magicSchools);
+  // damageTypes = reformatDamageTypes(damageTypes);
+  // weaponProperties = reformatWeaponProps(weaponProperties);
+  // skills = reformatSkills(skills);
+  // abilityScores = reformatAbilities(abilityScores);
+  // features = reformatFeatures(features);
+  traits = reformatTraits(traits);
 
+  console.log(traits);
+
+  // setLocalStorage('weapons', weapons);
+  // setLocalStorage('armor', armor);
+  // setLocalStorage('items', items);
+  // setLocalStorage('classes', classes);
+  // setLocalStorage('proficiencies', proficiencies);
+  // setLocalStorage('spells', spells);
+  // setLocalStorage('magic-schools', magicSchools);
+  // setLocalStorage('damage-types', damageTypes);
+  // setLocalStorage('weapon-properties', weaponProperties);
+  // setLocalStorage('skills', skills);
+  // setLocalStorage('ability-scores', abilityScores);
+  // setLocalStorage('features', features);
+  setLocalStorage('traits', traits);
 
   // console.log('profs', proficiencies);
 
@@ -45,11 +81,7 @@ $(document).ready(function() {
     items = equipment.slice(50);
   }
 
-  function parseClassSeed() {
-    classes =  JSON.parse(localStorage.getItem('classes'));
-  }
-
-  function parseProficiencySeed(seedName) {
+  function parseSeedData(seedName) {
     return JSON.parse(localStorage.getItem(seedName));
   }
 
@@ -58,7 +90,267 @@ $(document).ready(function() {
 let baseURL = 'https://cors-anywhere.herokuapp.com/http://dnd5eapi.co/api/';
 let apiURL = 'http://dnd5eapi.co/api/';
 
+// ---------------------------------- START Features Seed Data ----------------------------------
 
+function reformatTraits(traits) {
+  let reformattedTraits = traits.map((trait, index) => {
+    let reformatted = {
+      id: index + 1,
+      name: trait.name,
+      url: trait.url
+    }
+    return reformatted;
+  })
+  return reformattedTraits;
+}
+
+// ---------------------------------- START Features Seed Data ----------------------------------
+
+function reformatFeatures(features) {
+  let reformattedFeatures = features.map((feature, index) => {
+    let classId = classToId(feature.class.name)
+    let reformatted = {
+      id: index + 1,
+      name: feature.name,
+      level: feature.level,
+      class_id: classId,
+      url: feature.url
+    }
+    return reformatted;
+  })
+  return reformattedFeatures;
+}
+
+function classToId(_class) {
+  switch (_class) {
+  case 'Barbarian':
+    _class = 1;
+    break;
+  case 'Bard':
+    _class = 2;
+    break;
+  case 'Cleric':
+    _class = 3;
+    break;
+  case 'Druid':
+    _class = 4;
+    break;
+  case 'Fighter':
+    _class = 5;
+    break;
+  case 'Monk':
+    _class = 6;
+    break;
+  case 'Paladin':
+    _class = 7;
+    break;
+  case 'Ranger':
+    _class = 8;
+    break;
+  case 'Rogue':
+    _class = 9;
+    break;
+  case 'Sorcerer':
+    _class = 10;
+    break;
+  case 'Warlock':
+    _class = 11;
+    break;
+  case 'Wizard':
+    _class = 12;
+    break;
+  default:
+    _class = 1;
+  }
+  return _class;
+}
+
+
+// ---------------------------------- START Abilities Seed Data ----------------------------------
+
+function reformatAbilities(abilities) {
+  let reformattedAbilities = abilities.map((ability, index) => {
+    let reformatted = {
+      id: index + 1,
+      name: ability.name,
+      full_name: ability.full_name,
+      url: ability.url
+    }
+    return reformatted;
+  })
+  return reformattedAbilities;
+}
+
+// ---------------------------------- START Skills Seed Data ----------------------------------
+
+function reformatSkills(skills) {
+  let reformattedSkills = skills.map((skill, index) => {
+    let abilityId = abilityToId(skill.ability_score.name);
+    let reformatted = {
+      id: index + 1,
+      name: skill.name,
+      description: skill.desc[0],
+      ability_id: abilityId,
+      url: skill.url
+    }
+    return reformatted;
+  })
+  return reformattedSkills;
+}
+
+function abilityToId(ability) {
+  switch (ability) {
+  case 'STR':
+    ability = 1;
+    break;
+  case 'DEX':
+    ability = 2;
+    break;
+  case 'CON':
+    ability = 3;
+    break;
+  case 'INT':
+    ability = 4;
+    break;
+  case 'WIS':
+    ability = 5;
+    break;
+  case 'CHA':
+    ability = 6;
+    break;
+  default:
+    ability = 1;
+  }
+  return ability;
+}
+
+// ---------------------------------- START Weapon-Property Seed Data ----------------------------------
+
+function reformatWeaponProps(props) {
+  let reformattedWeaponProps = props.map((prop, index) => {
+    let reformatted = {
+      id: index + 1,
+      name: prop.name,
+      description: prop.desc[0],
+      url: prop.url
+    }
+    return reformatted;
+  })
+  return reformattedWeaponProps;
+}
+
+// ---------------------------------- START Damage-Type Seed Data ----------------------------------
+
+function reformatDamageTypes(types) {
+  let reformattedTypes = types.map((type, index) => {
+    let reformatted = {
+      id: index + 1,
+      name: type.name,
+      description: type.desc[0],
+      url: type.url
+    }
+    return reformatted;
+  })
+  return reformattedTypes;
+}
+
+// ---------------------------------- START Magic-School Seed Data ----------------------------------
+
+
+function getSeedData(resource) {
+  let url = `${baseURL}/${resource}`;
+
+  $.get(url)
+    .then(list => {
+      Promise.all(list.results.map((item, index) => {
+        return Promise.resolve($.get(`${url}/${index + 1}`));
+      }))
+      .then(items => {
+        setLocalStorage(resource, items);
+      });
+    });
+}
+
+function reformatSchools(schools) {
+  let reformattedSchools = schools.map((school, index) => {
+    let reformatted = {
+      id: index + 1,
+      name: school.name,
+      description: school.desc,
+      url: school.url
+    }
+    return reformatted;
+  })
+  return reformattedSchools;
+}
+
+// ---------------------------------- START Spell Seed Data ----------------------------------
+
+function getSpellSeed() {
+  let url = `${baseURL}/spells`;
+
+  $.get(url)
+    .then(spellList => {
+      Promise.all(spellList.results.map((spell, index) => {
+        return Promise.resolve($.get(`${url}/${index + 1}`));
+      }))
+      .then(spells => {
+        setLocalStorage('spells', spells);
+      });
+    });
+}
+
+function reformatSpells(spells) {
+  let reformattedSpells = spells.map((spell, index) => {
+    let magicSchool = magicSchoolToId(spell.school.name);
+    let reformatted = {
+      id: index + 1,
+      name: spell.name,
+      range: spell.range,
+      ritual: spell.ritual,
+      duration: spell.duration,
+      concentration: spell.concentration,
+      casting_time: spell.casting_time,
+      level: spell.level,
+      magic_school_id: magicSchool,
+      url: spell.url
+    }
+    return reformatted;
+  })
+  return reformattedSpells;
+}
+
+function magicSchoolToId(school) {
+  switch (school) {
+  case 'Abjuration':
+    school = 1;
+    break;
+  case 'Conjuration':
+    school = 2;
+    break;
+  case 'Divination':
+    school = 3;
+    break;
+  case 'Enchantment':
+    school = 4;
+    break;
+  case 'Evocation':
+    school = 5;
+    break;
+  case 'Illusion':
+    school = 6;
+    break;
+  case 'Necromancy':
+    school = 7;
+    break;
+  case 'Transmutation':
+    school = 8;
+    break;
+  default:
+    school = 1;
+  }
+  return school;
+}
 
 // ---------------------------------- START Equipment Seed Data ----------------------------------
 
